@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.105.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.23" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.23" />
   </ItemGroup>
@@ -14,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GestorTurnos.CrossCutting\GestorTurnos.CrossCutting.csproj" />
     <ProjectReference Include="..\GestorTurnos.Domain\GestorTurnos.Domain.csproj" />
+    <ProjectReference Include="..\GestorTurnos.Application\GestorTurnos.Application.csproj" />
   </ItemGroup>
 
 </Project>

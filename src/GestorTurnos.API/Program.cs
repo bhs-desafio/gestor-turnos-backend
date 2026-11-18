@@ -48,5 +48,6 @@ app.UseCors();
 app.UseHttpsRedirection();
 
 app.MapColaboradorEndpoints();
+app.MapTurnoEndpoints();
 
 app.Run();
