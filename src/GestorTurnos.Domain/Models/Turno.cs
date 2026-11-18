@@ -4,8 +4,8 @@ namespace GestorTurnos.Domain.Models
 {
     public class Turno: Entity<Guid>
     {
-        public Guid IdColaborador { get; private set; }
-        public DateTime HoraInicio { get; private set; }
-        public DateTime HoraFin { get; private set; }   
+        public Guid IdColaborador { get;  set; }
+        public DateTime HoraInicio { get;  set; }
+        public DateTime HoraFin { get;  set; }   
     }
 }
