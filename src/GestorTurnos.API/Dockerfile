@@ -12,16 +12,21 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["GestorTurnos.API/GestorTurnos.API.csproj","GestorTurnos.API/"]
+# Se copian todos los .csproj primero para que el restore quede cacheado en su propia capa
+COPY ["GestorTurnos.API/GestorTurnos.API.csproj", "GestorTurnos.API/"]
+COPY ["GestorTurnos.Application/GestorTurnos.Application.csproj", "GestorTurnos.Application/"]
+COPY ["GestorTurnos.CrossCutting/GestorTurnos.CrossCutting.csproj", "GestorTurnos.CrossCutting/"]
+COPY ["GestorTurnos.Domain/GestorTurnos.Domain.csproj", "GestorTurnos.Domain/"]
+COPY ["GestorTurnos.Infrastructure/GestorTurnos.Infrastructure.csproj", "GestorTurnos.Infrastructure/"]
 RUN dotnet restore "./GestorTurnos.API/GestorTurnos.API.csproj"
 COPY . .
 WORKDIR "/src/GestorTurnos.API"
-RUN dotnet build "./GestorTurnos.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./GestorTurnos.API.csproj" -c $BUILD_CONFIGURATION -o /app/build --no-restore
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./GestorTurnos.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./GestorTurnos.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false --no-restore
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
