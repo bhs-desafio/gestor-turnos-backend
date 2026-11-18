@@ -5,9 +5,9 @@ namespace GestorTurnos.Domain.Models
 
     public class CargaTurnoDetalle : Entity<Guid>
     {
-        public Guid IdColaborador { get; private set; }
-        public DateTime HoraInicio { get; private set; }
-        public DateTime HoraFin { get; private set; }
-        public string Error { get; private set; }
+        public Guid IdColaborador { get; set; }
+        public DateTime HoraInicio { get; set; }
+        public DateTime HoraFin { get; set; }
+        public string Error { get; set; }
     }
 }

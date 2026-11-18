@@ -19,4 +19,11 @@
     <ProjectReference Include="..\GestorTurnos.Domain\GestorTurnos.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Colaboradores\ModificarColabarador\" />
+    <Folder Include="Features\Colaboradores\EliminarColaborador\" />
+    <Folder Include="Features\Colaboradores\ListarColabaradores\" />
+    <Folder Include="Features\Colaboradores\ObtenerColaborador\" />
+  </ItemGroup>
+
 </Project>
