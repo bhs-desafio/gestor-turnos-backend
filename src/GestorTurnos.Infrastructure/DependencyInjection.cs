@@ -1,5 +1,7 @@
+using GestorTurnos.Application.Abstractions;
 using GestorTurnos.Domain.Common;
 using GestorTurnos.Domain.Repositories;
+using GestorTurnos.Infrastructure.Excel;
 using GestorTurnos.Infrastructure.Persistence;
 using GestorTurnos.Infrastructure.Persistence.Initialization;
 using GestorTurnos.Infrastructure.Persistence.Repositories;
@@ -19,6 +21,10 @@ public static class DependencyInjection
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
         services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
+        services.AddScoped<ITurnoRepository, TurnoRepository>();
+        services.AddScoped<ICargaTurnoRepository, CargaTurnoRepository>();
+
+        services.AddSingleton<ILectorExcelTurnos, LectorExcelTurnos>();
 
         services.AddSingleton(LeerOpcionesDeBaseDeDatos(configuration));
         services.AddScoped<DatabaseInitializer>();

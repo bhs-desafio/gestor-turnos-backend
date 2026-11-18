@@ -1,3 +1,4 @@
+using GestorTurnos.Application.Abstractions;
 using GestorTurnos.Application.Features.Colaboradores.CrearColabarador;
 using GestorTurnos.CrossCutting.Results;
 using GestorTurnos.Domain.Common;
@@ -35,6 +36,10 @@ public sealed class CrearColaboradorUseCaseTests : IDisposable
         services.AddApplication();
         services.AddScoped(_ => _colaboradorRepository);
         services.AddScoped(_ => _unitOfWork);
+        // ValidateOnBuild valida todos los handlers registrados: se agregan las dependencias de los demás casos de uso.
+        services.AddScoped(_ => Substitute.For<ITurnoRepository>());
+        services.AddScoped(_ => Substitute.For<ICargaTurnoRepository>());
+        services.AddScoped(_ => Substitute.For<ILectorExcelTurnos>());
 
         _provider = services.BuildServiceProvider(new ServiceProviderOptions { ValidateScopes = true, ValidateOnBuild = true });
         // Igual que en una petición HTTP: el caso de uso se resuelve dentro de un scope.

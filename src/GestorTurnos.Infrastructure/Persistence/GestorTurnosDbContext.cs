@@ -11,6 +11,9 @@ public class GestorTurnosDbContext : DbContext
     }
 
     public DbSet<Colaborador> Colaborador => Set<Colaborador>();
+    public DbSet<Turno> Turno => Set<Turno>();
+    public DbSet<CargaTurno> CargaTurno => Set<CargaTurno>();
+    public DbSet<CargaTurnoDetalle> CargaTurnoDetalle => Set<CargaTurnoDetalle>();
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

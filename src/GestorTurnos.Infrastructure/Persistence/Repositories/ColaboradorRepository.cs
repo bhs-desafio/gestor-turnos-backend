@@ -1,10 +1,6 @@
 using GestorTurnos.Domain.Models;
 using GestorTurnos.Domain.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace GestorTurnos.Infrastructure.Persistence.Repositories
 {
@@ -14,5 +10,13 @@ namespace GestorTurnos.Infrastructure.Persistence.Repositories
         public ColaboradorRepository(GestorTurnosDbContext dbContext) : base(dbContext)
         {
         }
+
+        public async Task<IReadOnlyList<Colaborador>> ObtenerPorEmailsAsync(
+            IReadOnlyCollection<string> emails,
+            CancellationToken cancellationToken = default) =>
+            await DbSet
+                .AsNoTracking()
+                .Where(c => emails.Contains(c.Email))
+                .ToListAsync(cancellationToken);
     }
 }
