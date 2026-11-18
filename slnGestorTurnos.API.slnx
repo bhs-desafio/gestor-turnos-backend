@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/GestorTurnos.API/GestorTurnos.API.csproj" />
+    <Project Path="src/GestorTurnos.Application/GestorTurnos.Application.csproj" Id="8f14a151-da5e-4fea-a324-26e81f306ebb" />
+    <Project Path="src/GestorTurnos.CrossCutting/GestorTurnos.CrossCutting.csproj" Id="8c7230fe-3b50-45a5-887b-553ca3b9bf80" />
+    <Project Path="src/GestorTurnos.Domain/GestorTurnos.Domain.csproj" Id="c101efeb-c67f-4286-a57e-daea9da15480" />
+    <Project Path="src/GestorTurnos.Infrastructure/GestorTurnos.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="GestorTurnos.Application.Tests/GestorTurnos.Application.Tests.csproj" Id="5fea2f2b-3b64-4a6d-939b-06ef24a40c49" />
+  </Folder>
+</Solution>
